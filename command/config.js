@@ -4,13 +4,13 @@ const chalk = require('chalk')
 //━━━━━━━━━━━━━━━[ WEBSITE API ]━━━━━━━━━━━━━━━━━//
 
 global.APIs = {
-zenz: 'https://zeroyt7-api.xyz',
+zeroyt7: 'https://zeroyt7-api.xyz',
 }
 
 //━━━━━━━━━━━━━━━[ APIKEY WEBSITE API ]━━━━━━━━━━━━━━━━━//
 
 global.APIKeys = {
-'https://zeroyt7-api.xyz': 'YOUR APIKEY',
+'https://zeroyt7-api.xyz': 'yourkey',
 }
 
 //━━━━━━━━━━━━━━━[ OTHER ]━━━━━━━━━━━━━━━━━//

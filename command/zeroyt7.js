@@ -134,13 +134,17 @@ return zeroyt7.sendMessage(m.chat, { image: await getBuffer(url), caption: capti
 return zeroyt7.sendMessage(m.chat, { video: await getBuffer(url), caption: caption, mentions: men ? men : []}, {quoted: m})
 } else if(mime.split("/")[0] === "audio"){
 return zeroyt7.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
-} else {l
+} else {
 return zeroyt7.sendMessage(m.chat, { document: await getBuffer(url), mimetype: mime, caption: caption, mentions: men ? men : []}, {quoted: m })
 }
 }
 
 zeroyt7.sendReadReceipt(m.chat, sender, [m.key.id])        
 
+//━━━━━━━━━━━━━━━[ FAKE ]━━━━━━━━━━━━━━━━━//
+
+const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2021,status: 200, thumbnail: fs.readFileSync('./image/zeroyt7.jpg'), surface: 200, message: `©Created By Zero YT7`, orderTitle: 'Please Subscribe Youtube Zero YT7', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+		
 //━━━━━━━━━━━━━━━[ FITURNYA ]━━━━━━━━━━━━━━━━━//
         
 switch(command) {
