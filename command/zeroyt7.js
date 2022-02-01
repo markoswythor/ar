@@ -53,7 +53,7 @@ module.exports = zeroyt7 = async (zeroyt7, m, chatUpdate) => {
 try {
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? m.message.buttonsResponseMessage.selectedButtonId : ''
 var budy = (typeof m.text == 'string' ? m.text : '')
-var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&./©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&./©^]/gi)[0] : "" : prefa ?? global.prefix
 var isCmd = body.startsWith(prefix)
 var command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()        
 var isGroup = m.key.remoteJid.endsWith('@g.us')
@@ -149,34 +149,51 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
         
 switch(command) {
 
+
+
 case 'menu': case 'help': {
-txt =`⭓Group Menu
-${simbol} ${prefix}revoke
-${simbol} ${prefix}add
-${simbol} ${prefix}kick
-${simbol} ${prefix}promote
-${simbol} ${prefix}demote
-${simbol} ${prefix}setname
-${simbol} ${prefix}setprofile
-${simbol} ${prefix}group
-${simbol} ${prefix}linkgroup
-${simbol} ${prefix}hidetag
-${simbol} ${prefix}tagall
-
-⭓Sticker Menu
-${simbol} ${prefix}sticker
-${simbol} ${prefix}togif
-${simbol} ${prefix}tomp4
-${simbol} ${prefix}toimage
-
-⭓Owner Menu
-${simbol} ${prefix}block
-${simbol} ${prefix}unblock
-${simbol} ${prefix}eval
-${simbol} ${prefix}public
-${simbol} ${prefix}self
-${simbol} ${prefix}ping
-${simbol} ${prefix}owner`
+txt =`╭───「 🔖 Comandos 📌 」
+│
+│
+│  - *Não floode senão os comandos podem cair!*
+│
+│ ⚠️ - *Se falhar, o servidor caiu temporariamente.*
+│
+│ 🏖️ - *1° → !Stickers*
+│ ᐳ _Comandos que usdm stickers._
+│
+│ 🌐 - *2° → !Down*
+│ ᐳ _Comandos de Downloads._
+│
+│ 🔐 - *3._
+│!Dono*
+│ ᐳ _Comandos que só meu dono pode usar._
+│
+│ 🧑🏼‍💻 - *4° → !Admins*
+│ ᐳ _Comandos para administradores._
+│
+│ 🎰 - *5° → !Games*
+│ ᐳ _Mini-Jo de comandos +18!_
+│
+🔞 - *6° → !Adult*
+│ ᐳ _Lista de comandos +18!_
+│
+│ 🖨️ - *7° → !Maker*
+│  _Lista de comandos de 
+│
+│ 🍙 - *8° → !Otaku*
+│ ᐳ _Lista de comandos de Anime!_
+│
+│ ℹ️ - *9° → !→ !Midia*
+│ ᐳ _Coman Informativos!_
+│
+│ 🎬 - *10° → !Midia*
+│ ᐳ _Comandos de Mídia!_
+│
+│ 🚪 - *11° → !Outros*
+│ ᐳ _Outros comandos!_
+│
+╰───────────────────`
 let message = await prepareWAMessageMedia({ image: fs.readFileSync('./image/zeroyt7.jpg') }, { upload: zeroyt7.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
@@ -185,28 +202,28 @@ imageMessage: message.imageMessage,
 hydratedContentText: txt,
 hydratedButtons: [{
 urlButton: {
-displayText: 'Rest Api’s',
-url: 'https://zeroyt7-api.xyz'
+displayText: '💠 Site Oficial',
+url: 'https://www.irisbot.com.br'
 }
 }, {
 urlButton: {
-displayText: 'Web Olshop',
-url: 'https://zeroyt7.xyz'
+displayText: '👨‍💻 Meu Dev',
+url: 'https://wa.me/5594991423691'
 }
 }, {
 quickReplyButton: {
-displayText: 'Status Bot',
+displayText: 'Status da Bot 🚀',
 id: 'ping'
 }
 }, {
 quickReplyButton: {
-displayText: 'Contact Owner',
-id: 'owner'
+displayText: 'Dúvidas frequentes',
+id: 'duvidas'
 }  
 }, {
 quickReplyButton: {
-displayText: 'Script',
-id: 'sc'
+displayText: 'Links ✨',
+id: 'site'
 }
 }]
 }
@@ -215,6 +232,10 @@ id: 'sc'
 zeroyt7.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
+
+
+// send a list message!
+
 
 case 'revoke':
 if (!m.isGroup) throw mess.group
@@ -322,7 +343,7 @@ teks += `\n⋙ Zero YT7 ⋘`
 zeroyt7.sendMessage(m.chat, { text: teks, mentions: groupMembers.map(a => a.id) }, { quoted: m })
 break
 
-case 'sticker': case 's': case 'stickergif': case 'sgif': {
+case 's2': {
 if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
 m.reply(mess.wait)
 if (/image/.test(mime)) {
@@ -430,6 +451,37 @@ headerType: 2
 zeroyt7.sendMessage(m.chat, buttonMessage3, { quoted: m })                        
 }
 break
+
+case 'duvidas' : {
+//let msg = await zeroyt7.sendMessage(m.chat, { displayName: `${ownername}`, contacts: [{ vcard }] } }, { quoted: m })
+let buttons3 = [
+{buttonId: `menu`, buttonText: {displayText: '► MENU '}, type: 1},
+]
+let buttonMessage3 = {
+text: `*Você pode ler minhas mensagens?*\n▸ WhatsApp protege suas mensagens garantindo que elas fiquem somente entre você e a Iris BOT. Ninguém mais pode ler ou ouvir suas conversas, nem mesmo o criador. Caso sinta-se inseguro e queira deixar de receber e enviar mensagens, você pode bloqueá-lo diretamente na conversa ou apagá-lo da sua lista de contatos. Não temos absolutamente acesso às suas mensagens. Nós podemos ver apenas quem solicita tais comandos da Iris Bot, assim como na imagem (digite *!f1* para vê-la)\n\n*A Iris BOT é paga?*\n▸ Isso nunca vai acontecer. Mas se você quiser, pode doar para nós usando o comando *!doação*\n\n*Como posso adicioná-la em um grupo?*\n▸ Infelizmente a estadia dele em grupos é limitada. Podendo ficar no máximo em 10 grupos, caso queira "burlar", me faça uma doação de 15 reais :)\n\n*Isenção de Responsabilidade*\n▸ Este projeto não é afiliado, associado, autorizado, endossado por, ou de qualquer forma oficialmente conectado com o WhatsApp ou qualquer uma de suas subsidiárias ou suas afiliadas. O site oficial do WhatsApp pode ser encontrado em whatsapp.com. "WhatsApp" bem como nomes, marcas, emblemas e imagens relacionadas são marcas registradas de seus respectivos proprietários.\n\n*Contribuição*\n▸ Sinta-se à vontade para abrir questões sobre quaisquer problemas ou se você tiver alguma solicitação de comandos.\n\n▸ Caso queira suas perguntas aqui, use *!help* (ex: !help Sua pergunta?)`,
+footerText: 'Press The Button Below',
+buttons: buttons3,
+headerType: 2
+}
+zeroyt7.sendMessage(m.chat, buttonMessage3, { quoted: m })                        
+}
+break
+
+
+case 'site' : case 'tutorial' : {
+//let msg = await zeroyt7.sendMessage(m.chat, { displayName: `${ownername}`, contacts: [{ vcard }] } }, { quoted: m })
+let buttons3 = [
+{buttonId: `menu`, buttonText: {displayText: '► MENU '}, type: 1},
+]
+let buttonMessage3 = {
+text: `Grupo deste bot: https://chat.whatsapp.com/CzCeJufYczJJXucJcKEaEa\n\nLink Principal:\nlinktr.ee/irisbot \n\nPara ler os temos desse bot clique nesse outro link:\nwww.botiris.cf/politica-de-privacidade-do-site/termos\n\nTutorial basico de como usar a iris:\nhttps://youtu.be/3ZA9WvIOpFY`,
+footerText: 'Press The Button Below',
+buttons: buttons3,
+headerType: 2
+}
+zeroyt7.sendMessage(m.chat, buttonMessage3, { quoted: m })                        
+}
+break
 case 'eval': {
 if (!isCreator && !m.key.fromMe) return m.reply(mess.owner)
 function Return(sul) {
@@ -462,6 +514,7 @@ break
 case 'sc': {
 m.reply('https://github.com/Zero-YT7/BaseMD-ZeroYT7')
 }
+
 break
 
 //━━━━━━━━━━━━━━━[ AKHIR FITUR ]━━━━━━━━━━━━━━━━━//

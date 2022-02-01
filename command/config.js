@@ -15,19 +15,19 @@ global.APIKeys = {
 
 //━━━━━━━━━━━━━━━[ OTHER ]━━━━━━━━━━━━━━━━━//
 
-global.ownername = 'Zero YT7'
-global.owner = ['6285157740529']
-global.packname = 'Zero YT7'
-global.author = 'Zero YT7'
-global.prefa = ['','!','.','🐦','🐤','🗿']
+global.ownername = 'Markos'
+global.owner = ['559491423691']
+global.packname = 'Iris Bot ✨'
+global.author = 'linktr.ee/irisbot 🚀'
+global.prefa = ['','!','.','🐦','/','🗿']
 global.sp = '⭔'
 global.mess = {
-admin: 'Fitur Khusus Admin Group!',
-botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
-owner: 'Fitur Khusus Owner Bot',
-group: 'Fitur Digunakan Hanya Untuk Group!',
-private: 'Fitur Digunakan Hanya Untuk Private Chat!',
-bot: 'Fitur Khusus Pengguna Nomor Bot',
+admin: 'só admiro',
+botAdmin: 'me da adm',
+owner: 'só meu dono',
+group: 'preciso estar em um grupo!',
+private: 'vá para meu pv!',
+bot: 'kkkkkt',
 wait: 'Loading...',
 }
 
